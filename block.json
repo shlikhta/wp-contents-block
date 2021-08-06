@@ -1,0 +1,16 @@
+{
+	"apiVersion": 2,
+	"name": "create-block/contents-block",
+	"version": "0.1.0",
+	"title": "Wiki Contents",
+	"category": "text",
+	"icon": "list-view",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "contents-block",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
