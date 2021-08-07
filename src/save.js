@@ -11,8 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
-
+import { useBlockProps, RichText, InnerBlocks } from '@wordpress/block-editor';
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -22,10 +21,18 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save({attributes}) {
+export default function save({ attributes }) {
+	const blockProps = useBlockProps.save();
+
 	return (
-		<div { ...useBlockProps.save() }>
-			{attributes.message}
+		<div {...blockProps}>
+			<a
+				className={`gutenberg-examples-align-${attributes.alignment}`}
+				href={attributes.linkUrl}
+				title={attributes.linkLabel}
+			>
+				{attributes.linkLabel}
+			</a>
 		</div>
 	);
 }

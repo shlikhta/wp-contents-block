@@ -25,14 +25,31 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( 'create-block/contents-block', {
+registerBlockType('create-block/contents-block', {
 	apiVersion: 2,
 	attributes: {
-		message: {
+		content: {
+			type: 'string',
+			source: 'html',
+			selector: 'ol',
+		},
+		linkUrl: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'href',
+		},
+		linkTarget: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'a',
+			attribute: 'target',
+		},
+
+		linkLabel: {
 			type: 'string',
 			source: 'text',
-			selector: 'div',
-			default: '', // empty default
+			selector: 'a',
 		},
 	},
 	/**
@@ -44,4 +61,4 @@ registerBlockType( 'create-block/contents-block', {
 	 * @see ./save.js
 	 */
 	save,
-} );
+});

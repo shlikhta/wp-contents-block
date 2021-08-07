@@ -6,5 +6,19 @@
  */
 
 .wp-block-create-block-contents-block {
-  font-size: 64px;
+  border: 1px solid #a2a9b1;
+  background-color: #f8f9fa;
+  padding: 7px;
+  font-size: 14px;
+   a {
+	 display: block;
+	 text-decoration: none;
+	 color: #0645ad;
+	 background: none;
+   }
+  ul, ol > {
+	li {
+	  margin-bottom: .1em;
+	}
+  }
 }

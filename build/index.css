@@ -5,13 +5,12 @@
  */
 .wp-block-create-block-contents-block {
   border: 1px dotted #f00;
-}
-
-.wp-block-create-block-contents-block input[type=text] {
-  font-size: 64px;
-  color: inherit;
-  background: inherit;
-  border: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
 }
 
 /*# sourceMappingURL=index.css.map*/

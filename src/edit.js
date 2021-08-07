@@ -11,7 +11,15 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { TextControl, ToggleControl } from '@wordpress/components';
+import { useState } from '@wordpress/element';
+import {
+	useBlockProps,
+	RichText,
+	InnerBlocks,
+	AlignmentToolbar,
+	BlockControls,
+} from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -19,7 +27,6 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import {Placeholder, TextControl} from '@wordpress/components'
 import './editor.scss';
 
 /**
@@ -30,13 +37,68 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
+const MY_TEMPLATE = [
+	['core/list', {}],
+	// [ 'core/heading', { placeholder: 'Book Title' } ],
+	// [ 'core/paragraph', { placeholder: 'Summary' } ],
+];
+
 // contents-block
-export default function Edit({attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, isSelected }) {
+	const blockProps = useBlockProps();
+
+	const [target, setTarget] = useState(false);
+
+	const onChangeContent = (newContent) => {
+		setAttributes({ content: newContent });
+	};
+
+	const onChangeAlignment = (newAlignment) => {
+		setAttributes({
+			alignment: newAlignment === undefined ? 'none' : newAlignment,
+		});
+	};
+
 	return (
-		<TextControl
-			{ ...useBlockProps() }
-			value={ attributes.message }
-			onChange={ ( val ) => setAttributes( { message: val } ) }
-		/>
+		<div {...blockProps}>
+			{isSelected ? (
+				<>
+					<TextControl
+						value={attributes.linkLabel}
+						label={'Label'}
+						onChange={(val) => setAttributes({ linkLabel: val })}
+					/>
+					<TextControl
+						value={attributes.linkUrl}
+						label={'Url'}
+						onChange={(val) => setAttributes({ linkUrl: val })}
+					/>
+					{/*<ToggleControl
+						label={'Open in new tab'}
+						checked={Boolean(attributes.linkTarget)}
+						onChange={(val) => {
+							console.log('val', val);
+							if (val) {
+								setAttributes({ linkTarget: '_blank' });
+							} else {
+								setAttributes({ linkTarget: '' });
+							}
+						}}
+					/>*/}
+				</>
+			) : (
+				<>
+					<a
+						className={attributes.className}
+						style={{ textAlign: attributes.alignment }}
+						onChange={onChangeContent}
+						href={attributes.linkUrl}
+						title={attributes.linkLabel}
+					>
+						{attributes.linkLabel}
+					</a>{' '}
+				</>
+			)}
+		</div>
 	);
 }

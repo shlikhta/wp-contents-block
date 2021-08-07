@@ -6,11 +6,8 @@
 
 .wp-block-create-block-contents-block {
 	border: 1px dotted #f00;
+	display: grid;
+  	grid-template-columns: 1fr 1fr;
+  	column-gap: 16px;
 }
 
-.wp-block-create-block-contents-block input[type='text'] {
-  font-size: 64px;
-  color: inherit;
-  background: inherit;
-  border: 0;
-}
