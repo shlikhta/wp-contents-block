@@ -1,24 +1,69 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
 .wp-block-create-block-contents-block {
-  border: 1px solid #a2a9b1;
-  background-color: #f8f9fa;
-  padding: 7px;
-  font-size: 14px;
-   a {
-	 display: block;
-	 text-decoration: none;
-	 color: #0645ad;
-	 background: none;
-   }
-  ul, ol > {
-	li {
-	  margin-bottom: .1em;
+	max-width: 100%;
+	border: 1px solid #a2a9b1;
+	background-color: #f8f9fa;
+	padding: 7px;
+	font-size: 14px;
+	margin: 0 1rem 0 0;
+	h3 {
+		display: block;
+		margin: 0 0 0.25em 0;
+		font-size: 1rem;
+		line-height: 1.3;
+		font-weight: 500;
 	}
-  }
+	a {
+		//display: block;
+		text-decoration: none;
+		color: #0645ad !important;
+		background: none;
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+	& > ol,
+	& > ul {
+		margin: 0;
+	}
+	ol,
+	ul {
+		padding-left: 0;
+		list-style: none;
+		a {
+			font-weight: 400;
+		}
+		ul,
+		ol {
+			margin: 0 0 0 2em;
+		}
+
+		ol {
+			> li {
+				&:before {
+					content: counter(list-item) '.';
+					padding-right: 0.5em;
+					position: relative;
+					left: auto;
+				}
+				&::marker {
+					content: none;
+				}
+			}
+		}
+		li {
+			margin: 0 0 0.1em 0;
+			padding: 0;
+		}
+	}
+	ul {
+		> li {
+			&:before {
+				content: none;
+			}
+		}
+	}
+	& + p {
+		margin-top: 0;
+	}
 }

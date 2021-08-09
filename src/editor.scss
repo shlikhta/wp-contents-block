@@ -1,13 +1,45 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
 .wp-block-create-block-contents-block {
-	border: 1px dotted #f00;
-	display: grid;
-  	grid-template-columns: 1fr 1fr;
-  	column-gap: 16px;
+	h3 {
+		display: block;
+		margin: 0 0 0.25em 0;
+		font-size: 1rem !important;
+		line-height: 1.3 !important;
+		font-weight: 500 !important;
+	}
+	.block-editor-block-list__layout {
+		ul,
+		ol {
+			margin: 0;
+			padding-left: 0;
+			list-style: none;
+			ul,
+			ol {
+				margin-left: 2em;
+			}
+			ol {
+				> li {
+					&:before {
+						content: counter(list-item) '.';
+						padding-right: 0.5em;
+					}
+					&::marker {
+						content: none;
+					}
+				}
+			}
+			li {
+				margin-bottom: 0.1em;
+			}
+		}
+	}
+	.sham-span-3 {
+		grid-column: span 3 / span 1;
+	}
+	.sham-edit-box {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 20px 1fr 1fr 96px;
+		align-items: center;
+		//column-gap: 16px;
+	}
 }
-

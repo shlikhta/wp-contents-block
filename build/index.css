@@ -1,16 +1,46 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.wp-block-create-block-contents-block {
-  border: 1px dotted #f00;
+.wp-block-create-block-contents-block h3 {
+  display: block;
+  margin: 0 0 0.25em 0;
+  font-size: 1rem !important;
+  line-height: 1.3 !important;
+  font-weight: 500 !important;
+}
+.wp-block-create-block-contents-block .block-editor-block-list__layout ul,
+.wp-block-create-block-contents-block .block-editor-block-list__layout ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.wp-block-create-block-contents-block .block-editor-block-list__layout ul ul,
+.wp-block-create-block-contents-block .block-editor-block-list__layout ul ol,
+.wp-block-create-block-contents-block .block-editor-block-list__layout ol ul,
+.wp-block-create-block-contents-block .block-editor-block-list__layout ol ol {
+  margin-left: 2em;
+}
+.wp-block-create-block-contents-block .block-editor-block-list__layout ul ol > li:before,
+.wp-block-create-block-contents-block .block-editor-block-list__layout ol ol > li:before {
+  content: counter(list-item) ".";
+  padding-right: 0.5em;
+}
+.wp-block-create-block-contents-block .block-editor-block-list__layout ul ol > li::marker,
+.wp-block-create-block-contents-block .block-editor-block-list__layout ol ol > li::marker {
+  content: none;
+}
+.wp-block-create-block-contents-block .block-editor-block-list__layout ul li,
+.wp-block-create-block-contents-block .block-editor-block-list__layout ol li {
+  margin-bottom: 0.1em;
+}
+.wp-block-create-block-contents-block .sham-span-3 {
+  -ms-grid-column-span: 3;
+  grid-column: span 3/span 1;
+}
+.wp-block-create-block-contents-block .sham-edit-box {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  -moz-column-gap: 16px;
-       column-gap: 16px;
+  width: 100%;
+  -ms-grid-columns: 20px 1fr 1fr 96px;
+  grid-template-columns: 20px 1fr 1fr 96px;
+  align-items: center;
 }
 
 /*# sourceMappingURL=index.css.map*/
